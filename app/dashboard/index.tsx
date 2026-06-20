@@ -3,7 +3,9 @@ import {
   View,
   Text,
   ScrollView,
+  Pressable,
 } from "react-native";
+import { router } from "expo-router";
 
 import PortfolioChart from "../../components/PortfolioChart";
 import PositionCard from "../../components/PositionCard";
@@ -152,6 +154,30 @@ export default function DashboardScreen() {
             position={position}
           />
         ))}
+
+        {/* Freeze Button */}
+        <Pressable
+          onPress={() => router.push("./freeze")}
+          style={{
+            marginTop: 24,
+            backgroundColor: "rgba(245,158,11,0.08)",
+            borderWidth: 1.5,
+            borderColor: Colors.warning,
+            borderRadius: 16,
+            paddingVertical: 16,
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: Colors.warning,
+              fontWeight: "700",
+              fontSize: 16,
+            }}
+          >
+            Freeze All Trading
+          </Text>
+        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
