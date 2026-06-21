@@ -6,7 +6,9 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 
-import { ShieldCheck, TriangleAlert } from "lucide-react-native";
+import { ShieldCheck, TriangleAlert, PlayCircle } from "lucide-react-native";
+
+import Logo from "../../components/Logo";
 
 import { Colors } from "../../constants/colors";
 
@@ -29,15 +31,7 @@ export default function FreezeScreen() {
           marginBottom: 40,
         }}
       >
-        <Text
-          style={{
-            color: Colors.text,
-            fontSize: 22,
-            fontWeight: "700",
-          }}
-        >
-          Tradio
-        </Text>
+        <Logo />
 
         <View
           style={{
@@ -169,22 +163,30 @@ export default function FreezeScreen() {
         <Pressable
           onPress={() => router.push("./dashboard")}
           style={{
-            backgroundColor: Colors.primary,
+            height: 56,
             borderRadius: 16,
-            paddingVertical: 16,
+            backgroundColor: Colors.primary,
+            flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
             marginBottom: 12,
           }}
         >
-          <Text
-            style={{
-              color: "#000",
-              fontWeight: "700",
-              fontSize: 16,
-            }}
-          >
-            Resume Auto-Trading
-          </Text>
+          <PlayCircle
+                size={18}
+                color="white"
+            />
+
+            <Text
+                style={{
+                color: "white",
+                fontWeight: "700",
+                fontSize: 15,
+                }}
+            >
+                Resume Automation
+            </Text>
         </Pressable>
 
         <Pressable

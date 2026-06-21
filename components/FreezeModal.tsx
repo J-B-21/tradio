@@ -11,11 +11,13 @@ import { Colors } from "../constants/colors";
 interface FreezeModalProps {
   visible: boolean;
   onClose: () => void;
+  onConfirm: () => void;
 }
 
 export default function FreezeModal({
   visible,
   onClose,
+  onConfirm,
 }: FreezeModalProps) {
   return (
     <Modal
@@ -92,7 +94,7 @@ export default function FreezeModal({
             </Pressable>
 
             <Pressable
-              onPress={onClose}
+              onPress={onConfirm}
               style={{
                 flex: 1,
                 backgroundColor: "rgba(245,158,11,0.15)",
