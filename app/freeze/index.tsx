@@ -1,12 +1,8 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  View,
-  Text,
-  Pressable,
-} from "react-native";
 import { router } from "expo-router";
+import { Pressable, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { ShieldCheck, TriangleAlert, PlayCircle } from "lucide-react-native";
+import { PlayCircle, ShieldCheck, TriangleAlert } from "lucide-react-native";
 
 import Logo from "../../components/Logo";
 
@@ -96,10 +92,7 @@ export default function FreezeScreen() {
               marginBottom: 24,
             }}
           >
-            <TriangleAlert
-              size={40}
-              color={Colors.danger}
-            />
+            <TriangleAlert size={40} color={Colors.danger} />
           </View>
 
           <Text
@@ -120,9 +113,8 @@ export default function FreezeScreen() {
               lineHeight: 22,
             }}
           >
-            All automated trading operations have
-            been completely paused. Your active
-            funds are securely locked in place.
+            All automated trading operations have been completely paused. Your
+            active funds are securely locked in place.
           </Text>
 
           <View
@@ -138,10 +130,7 @@ export default function FreezeScreen() {
               paddingVertical: 8,
             }}
           >
-            <ShieldCheck
-              size={16}
-              color={Colors.primary}
-            />
+            <ShieldCheck size={16} color={Colors.primary} />
 
             <Text
               style={{
@@ -161,7 +150,7 @@ export default function FreezeScreen() {
 
       <View>
         <Pressable
-          onPress={() => router.push("./dashboard")}
+          onPress={() => router.replace("/dashboard")}
           style={{
             height: 56,
             borderRadius: 16,
@@ -173,23 +162,21 @@ export default function FreezeScreen() {
             marginBottom: 12,
           }}
         >
-          <PlayCircle
-                size={18}
-                color="white"
-            />
+          <PlayCircle size={18} color="white" />
 
-            <Text
-                style={{
-                color: "white",
-                fontWeight: "700",
-                fontSize: 15,
-                }}
-            >
-                Resume Automation
-            </Text>
+          <Text
+            style={{
+              color: "white",
+              fontWeight: "700",
+              fontSize: 15,
+            }}
+          >
+            Resume Automation
+          </Text>
         </Pressable>
 
         <Pressable
+          onPress={() => router.push("/boundary")}
           style={{
             borderWidth: 1,
             borderColor: "#2a3540",

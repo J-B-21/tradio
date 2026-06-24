@@ -1,8 +1,8 @@
-import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { TrendingUp } from "lucide-react-native";
+import { Text, View } from "react-native";
 
-export default function TradioLogo() {
+export default function Logo() {
   return (
     <View
       style={{
@@ -23,11 +23,7 @@ export default function TradioLogo() {
           alignItems: "center",
         }}
       >
-        <TrendingUp
-          size={18}
-          color="white"
-          strokeWidth={2.5}
-        />
+        <TrendingUp size={18} color="white" strokeWidth={2.5} />
       </LinearGradient>
 
       <Text
@@ -38,9 +34,7 @@ export default function TradioLogo() {
         }}
       >
         Trad
-        <Text style={{ color: "#00d4aa" }}>
-          io
-        </Text>
+        <Text style={{ color: "#00d4aa" }}>io</Text>
       </Text>
     </View>
   );
