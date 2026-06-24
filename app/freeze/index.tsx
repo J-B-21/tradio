@@ -150,7 +150,7 @@ export default function FreezeScreen() {
 
       <View>
         <Pressable
-          onPress={() => router.replace("/dashboard")}
+          onPress={() => router.back()}
           style={{
             height: 56,
             borderRadius: 16,
@@ -159,7 +159,6 @@ export default function FreezeScreen() {
             alignItems: "center",
             justifyContent: "center",
             gap: 8,
-            marginBottom: 12,
           }}
         >
           <PlayCircle size={18} color="white" />
@@ -172,27 +171,6 @@ export default function FreezeScreen() {
             }}
           >
             Resume Automation
-          </Text>
-        </Pressable>
-
-        <Pressable
-          onPress={() => router.push("/boundary")}
-          style={{
-            borderWidth: 1,
-            borderColor: "#2a3540",
-            borderRadius: 16,
-            paddingVertical: 16,
-            alignItems: "center",
-          }}
-        >
-          <Text
-            style={{
-              color: Colors.secondary,
-              fontWeight: "600",
-              fontSize: 16,
-            }}
-          >
-            Adjust AI Rules Manually
           </Text>
         </Pressable>
       </View>

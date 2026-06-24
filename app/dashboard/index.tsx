@@ -11,6 +11,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Clock3,
   PauseCircle,
+  Bot,
+  ChevronRight,
+  Settings2,
 } from "lucide-react-native";
 
 import Logo from "../../components/Logo";
@@ -136,6 +139,156 @@ export default function DashboardScreen() {
           </Text>
         </View>
 
+        {/* AI CONTROL PANEL */}
+
+        <View
+          style={{
+            backgroundColor: Colors.card,
+            borderRadius: 18,
+            padding: 16,
+            marginBottom: 24,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: 14,
+            }}
+          >
+            <Bot
+              size={18}
+              color={Colors.primary}
+            />
+
+            <Text
+              style={{
+                color: Colors.text,
+                fontSize: 16,
+                fontWeight: "700",
+                marginLeft: 8,
+              }}
+            >
+              AI Automation
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginBottom: 16,
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  color: Colors.muted,
+                  fontSize: 12,
+                }}
+              >
+                Signal
+              </Text>
+
+              <Text
+                style={{
+                  color: Colors.primary,
+                  fontWeight: "700",
+                  fontSize: 16,
+                }}
+              >
+                HOLD
+              </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  color: Colors.muted,
+                  fontSize: 12,
+                }}
+              >
+                Pending Trades
+              </Text>
+
+              <Text
+                style={{
+                  color: Colors.warning,
+                  fontWeight: "700",
+                  fontSize: 16,
+                }}
+              >
+                3
+              </Text>
+            </View>
+          </View>
+
+          <Pressable
+            onPress={() =>
+              router.push("/trades")
+            }
+            style={{
+              height: 48,
+              borderRadius: 14,
+              backgroundColor:
+                "rgba(245,158,11,0.12)",
+
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+
+              paddingHorizontal: 14,
+              marginBottom: 10,
+            }}
+          >
+            <Text
+              style={{
+                color: Colors.text,
+                fontWeight: "600",
+              }}
+            >
+              Review Pending Trades
+            </Text>
+
+            <ChevronRight
+              size={18}
+              color={Colors.warning}
+            />
+          </Pressable>
+
+          <Pressable
+            onPress={() =>
+              router.push("/boundary")
+            }
+            style={{
+              height: 48,
+              borderRadius: 14,
+              backgroundColor:
+                "rgba(0,212,170,0.08)",
+
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+
+              paddingHorizontal: 14,
+            }}
+          >
+            <Text
+              style={{
+                color: Colors.text,
+                fontWeight: "600",
+              }}
+            >
+              Edit AI Boundaries
+            </Text>
+
+            <Settings2
+              size={18}
+              color={Colors.primary}
+            />
+          </Pressable>
+        </View>
+
         {/* Positions */}
 
         <Text
@@ -201,7 +354,7 @@ export default function DashboardScreen() {
         onConfirm={() => {
           setShowModal(false);
           setTimeout(() => {
-            router.replace("/freeze");
+            router.push("/freeze");
           }, 200);
         }}
       />

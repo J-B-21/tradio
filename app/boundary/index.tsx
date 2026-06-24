@@ -67,6 +67,8 @@ export default function BoundaryScreen() {
         console.log(
           "AI boundaries saved"
         );
+
+        router.back();
       } catch (error) {
         console.log(
           "Failed to save boundaries",
