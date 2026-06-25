@@ -24,13 +24,13 @@ export function getSignalReason(
 ) {
   switch (signal) {
     case "BUY":
-      return "Price entered the buy zone.";
+      return "Portfolio value entered the configured buy zone.";
 
     case "SELL":
-      return "Price entered the sell zone.";
+      return "Portfolio value entered the configured sell zone.";
 
     default:
-      return "Price remains between boundaries.";
+      return "Portfolio value remains between boundaries.";
   }
 }
 

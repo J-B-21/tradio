@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import {
   ScrollView,
   View,
@@ -6,6 +6,7 @@ import {
   Pressable,
 } from "react-native";
 import { router } from "expo-router";
+import { useFocusEffect } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
@@ -21,13 +22,112 @@ import StatusBadge from "../../components/StatusBadge";
 import PortfolioChart from "../../components/PortfolioChart";
 import PositionCard from "../../components/PositionCard";
 import FreezeModal from "../../components/FreezeModal";
+import AIStatusCard from "../../components/AIStatusCard";
 
 import { Colors } from "../../constants/colors";
-import { positions } from "../../constants/mockData";
+import { positions, portfolioChartData } from "../../constants/mockData";
 import { useCountdown } from "../../hooks/useCountdown";
+
+import {
+  getSignal,
+  getSignalReason,
+  getCurrentFrac,
+} from "../../utils/boundaryEngine";
+import {
+  getBoundaries,
+} from "../../utils/boundaryStorage";
+import {
+  getTradeQueue,
+} from "../../utils/tradeQueue";
+
 
 export default function DashboardScreen() {
   const countdown = useCountdown(252);
+
+  const [signal, setSignal] =
+    useState<
+      "BUY" | "SELL" | "HOLD"
+    >("HOLD");
+
+  const [reason, setReason] =
+    useState("");
+
+  async function loadAIStatus() {
+    const {
+      buyFrac,
+      sellFrac,
+    } =
+      await getBoundaries();
+
+    const values =
+      portfolioChartData.map(
+        (point) => point.v
+      );
+
+    const currentPrice =
+      values[values.length - 1];
+
+    const highestPrice =
+      Math.max(...values);
+
+    const lowestPrice =
+      Math.min(...values);
+
+    const currentFrac =
+      getCurrentFrac(
+        currentPrice,
+        lowestPrice,
+        highestPrice
+      );
+
+    const newSignal =
+      getSignal(
+        currentFrac,
+        buyFrac,
+        sellFrac
+      );
+
+    setSignal(newSignal);
+
+    setReason(
+      getSignalReason(
+        newSignal
+      )
+    );
+  }
+
+  const [pendingCount, setPendingCount] =
+    useState(0);
+
+  async function loadPendingTrades() {
+    try {
+      const queue =
+        await getTradeQueue();
+
+      const pending =
+        queue.filter(
+          (trade) =>
+            trade.status ===
+            "pending"
+        ).length;
+
+      setPendingCount(
+        pending
+      );
+    } catch (error) {
+      console.log(
+        "Failed to load trade count",
+        error
+      );
+    }
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      loadAIStatus();
+      loadPendingTrades();
+    }, [])
+  );
 
   const [showModal, setShowModal] =
     useState(false);
@@ -97,6 +197,11 @@ export default function DashboardScreen() {
             +$320.15 Today
           </Text>
         </View>
+
+        <AIStatusCard
+          signal={signal}
+          reason={reason}
+        />
 
         {/* Chart */}
 
@@ -192,12 +297,18 @@ export default function DashboardScreen() {
 
               <Text
                 style={{
-                  color: Colors.primary,
+                  color:
+                    signal === "BUY"
+                      ? Colors.primary
+                      : signal === "SELL"
+                      ? Colors.danger
+                      : Colors.warning,
+
                   fontWeight: "700",
                   fontSize: 16,
                 }}
               >
-                HOLD
+                {signal}
               </Text>
             </View>
 
@@ -218,7 +329,7 @@ export default function DashboardScreen() {
                   fontSize: 16,
                 }}
               >
-                3
+                {pendingCount}
               </Text>
             </View>
           </View>
