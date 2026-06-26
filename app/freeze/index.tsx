@@ -150,7 +150,7 @@ export default function FreezeScreen() {
 
       <View>
         <Pressable
-          onPress={() => router.back()}
+          onPress={() => router.replace("/dashboard")}
           style={{
             height: 56,
             borderRadius: 16,

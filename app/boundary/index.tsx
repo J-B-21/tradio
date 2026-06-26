@@ -8,6 +8,7 @@ import {
   Pressable,
   Switch,
   ScrollView,
+  Alert,
 } from "react-native";
 import { router } from "expo-router";
 import { ArrowLeft } from "lucide-react-native";
@@ -68,7 +69,17 @@ export default function BoundaryScreen() {
           "AI boundaries saved"
         );
 
-        router.back();
+        Alert.alert(
+          "Saved",
+          "AI boundaries updated.",
+          [
+            {
+              text: "OK",
+              onPress: () =>
+                router.back(),
+            },
+          ]
+        );
       } catch (error) {
         console.log(
           "Failed to save boundaries",

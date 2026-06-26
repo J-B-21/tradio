@@ -465,7 +465,7 @@ export default function DashboardScreen() {
         onConfirm={() => {
           setShowModal(false);
           setTimeout(() => {
-            router.push("/freeze");
+            router.replace("/freeze");
           }, 200);
         }}
       />
