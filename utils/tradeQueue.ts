@@ -1,3 +1,4 @@
+import { Alert, } from "react-native";
 import AsyncStorage from
   "@react-native-async-storage/async-storage";
 import { MOCK_TRADES } from "../constants/mockTrades";
@@ -56,11 +57,15 @@ export async function saveTradeQueue(
       JSON.stringify(queue)
     );
   } catch (error) {
-    console.log(
-      "Failed to save trade queue",
-      error
-    );
-  }
+      Alert.alert(
+        "Error",
+        "Unable to save changes."
+      );
+      console.log(
+        "Failed to save trade queue",
+        error
+      );
+    }
 }
 
 export async function addTrade(

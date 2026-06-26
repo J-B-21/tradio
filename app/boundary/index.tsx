@@ -81,11 +81,15 @@ export default function BoundaryScreen() {
           ]
         );
       } catch (error) {
-        console.log(
-          "Failed to save boundaries",
-          error
-        );
-      }
+          Alert.alert(
+            "Error",
+            "Unable to save changes."
+          );
+          console.log(
+            "Failed to save boundaries",
+            error
+          );
+        }
     };
 
   const resetDefaults = () => {
