@@ -24,6 +24,8 @@ import {
 
 import TradeCard
   from "../../components/TradeCard";
+import ApproveTradesModal 
+  from "../../components/ApproveTradesModal";
 
 import {
   TradeItem,
@@ -44,6 +46,9 @@ export default function TradesScreen() {
 
   const [loading, setLoading] =
     useState(true);
+
+  const [showApproveModal, setShowApproveModal] =
+    useState(false);
 
   const [approved, setApproved] =
     useState(false);
@@ -529,9 +534,7 @@ export default function TradesScreen() {
             pendingCount ===
             0
           }
-          onPress={
-            handleApproveAll
-          }
+          onPress={() => setShowApproveModal(true)}
           style={{
             backgroundColor:
               pendingCount >
@@ -570,6 +573,17 @@ export default function TradesScreen() {
           </Text>
         </Pressable>
       </View>
+
+      <ApproveTradesModal
+        visible={showApproveModal}
+        onClose={() => setShowApproveModal(false)}
+        onConfirm={() => {
+          setShowApproveModal(false);
+          setTimeout(() => {
+            handleApproveAll();
+          }, 200);
+        }}
+      />
     </SafeAreaView>
   );
 }
