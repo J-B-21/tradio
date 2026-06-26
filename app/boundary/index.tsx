@@ -199,6 +199,20 @@ export default function BoundaryScreen() {
             gap: 12,
           }}
         >
+
+          <Text
+            style={{
+              color: Colors.muted,
+              fontSize: 12,
+              marginTop: 8,
+            }}
+          >
+            The AI buys when the price
+            reaches the Buy Fraction and
+            sells when it reaches the Sell
+            Fraction.
+          </Text>
+          
           {/* SELL CARD */}
           <View
             style={{
