@@ -2,16 +2,19 @@
   "expo": {
     "name": "Tradio",
     "slug": "tradio",
-    "version": "1.0.0",
+    "description": "AI-powered automated trading assistant.",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "tradio",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tradio.app"
     },
     "android": {
+      "package": "com.tradio.app",
       "backgroundColor": "#080c14",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
@@ -43,6 +46,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c66879ee-55db-4698-8046-50bf93359b2d"
+      }
     }
   }
 }
