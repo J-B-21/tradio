@@ -3,11 +3,11 @@ import AsyncStorage from
   "@react-native-async-storage/async-storage";
 import { MOCK_TRADES } from "../constants/mockTrades";
 
-export type TradeAction =
+type TradeAction =
   | "buy"
   | "sell";
 
-export type ItemStatus =
+type ItemStatus =
   | "pending"
   | "skipped"
   | "overridden"

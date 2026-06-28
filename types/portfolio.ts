@@ -6,8 +6,3 @@ export interface Position {
   change: string;
   up: boolean;
 }
-
-export interface PortfolioPoint {
-  t: string;
-  v: number;
-}
