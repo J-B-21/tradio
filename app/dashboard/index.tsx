@@ -160,6 +160,57 @@ export default function DashboardScreen() {
           <StatusBadge />
         </View>
 
+        {/* Demo Mode */}
+
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+
+            backgroundColor: "rgba(59,130,246,0.08)",
+            borderWidth: 1,
+            borderColor: "rgba(59,130,246,0.25)",
+
+            borderRadius: 14,
+            paddingHorizontal: 14,
+            paddingVertical: 12,
+
+            marginBottom: 24,
+          }}
+        >
+          <View
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: 4,
+              backgroundColor: "#3b82f6",
+              marginRight: 10,
+            }}
+          />
+
+          <View style={{ flex: 1 }}>
+            <Text
+              style={{
+                color: "#93c5fd",
+                fontWeight: "700",
+                marginBottom: 2,
+              }}
+            >
+              Demo Mode
+            </Text>
+
+            <Text
+              style={{
+                color: Colors.secondary,
+                fontSize: 13,
+                lineHeight: 18,
+              }}
+            >
+              Portfolio values, market prices and AI decisions are simulated for demonstration purposes.
+            </Text>
+          </View>
+        </View>
+
         {/* Portfolio */}
 
         <View
@@ -240,7 +291,7 @@ export default function DashboardScreen() {
               color: Colors.secondary,
             }}
           >
-            Next automated adjustment in {countdown}
+            Next AI evaluation in {countdown}
           </Text>
         </View>
 
